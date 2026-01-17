@@ -14,13 +14,13 @@ while True:
   user_tries_counter = user_tries_counter + 1
   if user_guess > computer_guess:
     print("Your number is too high!")
-    continue
+    
   if user_guess < computer_guess:
     print("Your number is too low!")
-    continue
+    
   if user_guess == computer_guess:
     print("You are goddamn right!!")
-    print("Your score is: " + str(user_tries_counter))
+    print("Your score is: " + str(user_tries_counter * -1))
     break
 
 

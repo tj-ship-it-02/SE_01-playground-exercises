@@ -36,3 +36,34 @@ def main():
     print(f"You: {scores['user']}, Computer: {scores['computer']}, Ties: {scores['tie']}")
 
 main()
+
+----
+
+while True:
+      if user_guess == computer_guess:
+        print("You are goddamn rightttt, my number was " + computer_guess + ".")
+        break
+      if user_guess > computer_guess:
+        print("Your number is too high, try again: ")
+        continue
+      if user_guess < computer_guess:
+        print("Your number is too low, try again: ")
+        continue
+
+
+
+def user_number_guess():
+  while True:
+    user_guess = input("Guess my number, it's between 1 and 10: ")
+    if not user_guess.isnumeric():
+      print("You can't write text, give me a number: ")
+    else:
+      return int(user_guess)
+
+
+def run_game():
+    user_number_guess()
+    if user_guess == computer_guess:
+      print("You are goddamn rightttt, my number was " + computer_guess + ".")
+
+run_game()
