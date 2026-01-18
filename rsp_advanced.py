@@ -23,62 +23,60 @@ def player_choice_validation():
             break
     return player_choice
 
-def determine_winner(computer_choice, player_choice):
+def determine_round_winner(computer_choice, player_choice):
     if player_choice == computer_choice:
+        print("NOBODY won, it's a tie.")
         return "tie"
     elif (player_choice == "paper" and computer_choice == "rock") or \
          (player_choice == "scissor" and computer_choice == "paper") or \
          (player_choice == "rock" and computer_choice == "scissor"):
+        print("YOU WON!!")
         return "player"
     else:
+        print("The computer won..")
         return "computer"
 
-player_score = 0
-computer_score = 0
 
-def scoring_board(result):
+
+def calculate_scoring_board(result, player_score, computer_score):
     if result == "player":
-        player_score == player_score + 1
-    if result == "computer":
-        computer_score == computer_score + 1
-
-
+        player_score = player_score + 1
+        print("THE SCORE BOARD IS:")
+        print("Player Score: " + str(player_score))
+        print("Computer Score: " + str(computer_score))
+        return player_score, computer_score
+    elif result == "computer":
+        computer_score = computer_score + 1
+        print("THE SCORE BOARD IS:")
+        print("Player Score: " + str(player_score))
+        print("Computer Score: " + str(computer_score))
+        return player_score, computer_score
+    else:
+        print("THE SCORE BOARD IS:")
+        print("Player Score: " + str(player_score))
+        print("Computer Score: " + str(computer_score))
+        return player_score, computer_score
 
 
 def run_rsp_game():
-    computer_choice = get_computer_choice()
-    print(computer_choice)
-    player_choice = player_choice_validation()
+    player_score = 0
+    computer_score = 0
 
-    result = determine_winner(computer_choice, player_choice)
+    while True:
+        computer_choice = get_computer_choice()
+        print(computer_choice)
+        player_choice = player_choice_validation()
+        result = determine_round_winner(computer_choice, player_choice)
+        player_score, computer_score = calculate_scoring_board(result, player_score, computer_score)
 
-    if result == "tie":
-        print("NOBODY won, it's a tie.")
-    elif result == "player":
-        print("YOU WON!!")
-    else:
-        print("The computer won..")
+        if player_score >= 3:
+            print("The finale winner is: YOU!!")
+            break
+        elif computer_score >= 3:
+            print("The finale winner is: The computer :(")
+            break
+
+run_rsp_game()
     
 
 
-
-run_rsp_game()
-
-#print(computer_choice)
-#print(player_choice)
-
-
-# if player_choice == computer_choice:
-#         print("TIES! Nobody won.")
-#     elif player_choice == "paper" and computer_choice == "rock":
-#         print("YOU WON!!")
-#     elif player_choice == "rock" and computer_choice == "scissor":
-#         print("YOU WON!!")
-#     elif player_choice == "scissor" and computer_choice == "paper":
-#         print("YOU WON!!")
-#     elif player_choice == "paper" and computer_choice == "scissor":
-#         print("The computer won...")
-#     elif player_choice == "rock" and computer_choice == "paper":
-#         print("The computer won...")
-#     elif player_choice == "scissor" and computer_choice == "rock":
-#         print("The computer won...")
